@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package divide;
+
+option java_package = "com.gojek.test.divide";
+option java_outer_classname = "DivideService";
+option java_multiple_files = true;
+
+
+service Divide {
+	rpc DoDivide(Numbers) returns(Resp) {}
+}
+
+message Numbers {
+	int32 a=1;
+	int32 b=2;
+}
+
+message Resp {
+	int32 q=1;
+}
