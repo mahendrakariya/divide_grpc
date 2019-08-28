@@ -1,0 +1,37 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: divide-deployment
+  labels:
+    app: divide
+    version: v1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: divide
+      version: v1
+  template:
+    metadata:
+      labels:
+        app: divide
+        version: v1
+    spec:
+      containers:
+      - name: divide-grpc-cont
+        image: mahendrakariya/divide_grpc:0.0.1
+        ports:
+        - containerPort: 50052
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: divide-svc
+spec:
+  selector:
+    app: divide
+  ports:
+  - protocol: TCP
+    port: 50052
+    targetPort: 50052
+
