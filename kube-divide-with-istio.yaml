@@ -172,5 +172,5 @@ spec:
   - protocol: TCP
     port: 50052
     targetPort: 50052
-
+    name: "grpc"
 ---
